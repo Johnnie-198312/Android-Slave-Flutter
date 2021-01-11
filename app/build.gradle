@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.john.android_slave_flutter"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            // Filter for architectures supported by Flutter.
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        profile {
+            initWith debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+repositories {
+    maven {
+        url '/Users/admin/workspace/native-mix-cross-platform/flutter/Master-Flutter/master_flutter/build/host/outputs/repo'
+        // This is relative to the location of the build.gradle file
+        // if using a relative path.
+    }
+    maven {
+        url 'https://storage.googleapis.com/download.flutter.io'
+    }
+}
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+//    flutter
+    debugImplementation 'com.example.master_flutter:flutter_debug:1.0'
+    profileImplementation 'com.example.master_flutter:flutter_profile:1.0'
+    releaseImplementation 'com.example.master_flutter:flutter_release:1.0'
+
+//    flutter
+}
+
+//    flutter
+
+//    flutter
+
+
